@@ -1,0 +1,113 @@
+.navbar {
+  background-color: #252733;
+  color: #fff;
+  font-size: 1rem;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 240px;
+  overflow-x: hidden;
+  transition: all 0.3s ease-in-out;
+  z-index: 999;
+}
+
+.navbar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  border-bottom: 1px solid #383a44;
+}
+
+.navbar-header-title {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.navbar-header-menu {
+  cursor: pointer;
+}
+
+.navbar-menu {
+  padding-top: 1.5rem;
+  list-style: none;
+  margin: 0;
+  height: calc(100% - 4.5rem);
+  overflow-y: auto;
+}
+
+.navbar-menu.active {
+  transform: translateX(0);
+}
+
+.navbar-item {
+  padding: 0.5rem 1.5rem;
+}
+
+.navbar-link {
+  display: flex;
+  align-items: center;
+  color: #fff;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.navbar-link:hover {
+  color: #fff;
+  background-color: #1c1d24;
+}
+
+.navbar-icon {
+  margin-right: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.navbar-subtitle {
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 0.5rem 1.5rem;
+  color: #bdbdbd;
+}
+
+.navbar-submenu {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.navbar-subitem {
+  padding: 0.5rem 1.5rem;
+}
+
+
+.navbar-header-menu {
+    display: none; /* hide the hamburger menu icon by default */
+  }
+  
+  @media (max-width: 768px) {
+    .navbar {
+      transform: translateX(-100%);
+    }
+  
+    .navbar-header-menu {
+      display: block; /* show the hamburger menu icon on small screens */
+    }
+  
+    .navbar-menu {
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 70%;
+      background-color: #fff;
+      z-index: 9999;
+      transform: translateX(-100%);
+      transition: transform 0.3s ease-in-out;
+    }
+  
+    .navbar-menu.active {
+      transform: translateX(0); /* slide in the menu from the left */
+    }
+  }
+  
