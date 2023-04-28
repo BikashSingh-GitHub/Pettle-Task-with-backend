@@ -1,137 +1,106 @@
 .container {
-    display: flex;
-    flex-direction: row;
-    margin-top: 70px; /* adjust this value as needed /
-    height: calc(100vh - 70px); / adjust this value as needed */
-    }
-    
-    .calendar-container {
-      flex: 1;
-      margin-right: 50px;
-      margin-left:350px; /* adjust this value as needed */
-      width: 50%; /* adjust this value as needed */
-      height: 300px;
-    }
-    
-    @media (max-width: 767px) {
-      .calendar-container {
-        margin: 0;
-        width: 100%;
-        height: 200px; /* adjust this value as needed */
-      }
-    }
-    
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 150px;
+}
 
+.calendar-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  margin-top: 20px;
+}
 
-    .list-view {
-        flex: 2;
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        font-size: 14px; /* adjust this value as needed */
-      }
-      
-      @media (max-width: 767px) {
-        .list-view {
-          font-size: 12px; /* adjust this value as needed */
-          margin-bottom: 10px; /* adjust this value as needed */
-        }
-      }
-      
-    
-    .booking-card {
-    background-color: #f5f5f5; /* adjust this value as needed /
-    border-radius: 10px; / adjust this value as needed /
-    margin-bottom: 10px; / adjust this value as needed /
-    padding: 10px; / adjust this value as needed */
-    }
-    
-    .booking-header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    }
-    
-    .booking-image {
-    margin-right: 10px; /* adjust this value as needed */
-    }
-    
-    .booking-dates {
-    display: flex;
-    flex-direction: column;
-    font-weight: bold;
-    margin-right: 10px; /* adjust this value as needed */
-    }
-    
-    .booking-dates span {
-    margin-bottom: 5px; /* adjust this value as needed */
-    }
-    
-    .booking-status {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-weight: bold;
-    margin-left: 10px; /* adjust this value as needed */
-    }
-    
-    .booking-status span {
-    margin-bottom: 5px; /* adjust this value as needed */
-    }
-    
-    /* For screens smaller than 768px */
-    @media (max-width: 767px) {
-    .container {
-    flex-direction: column;
-    }
-    
- 
+.booking-box {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+}
 
-    .list-view {
-    flex: none;
-    }
-    
-    .booking-card {
-    padding: 20px;
-    }
-    
-    .booking-image {
-    margin-right: 20px;
-    }
-    
-    .booking-dates {
-    margin-right: 20px;
-    }
-    
-    .booking-status {
-    margin-left: 20px;
-    }
-    }
-    
-    
-    .list-view {
-    flex: 2;
-    }
-    
-    .booking-card {
-    padding: 10px;
-    }
-    
-    .booking-image {
-    margin-right: 10px;
-    }
-    
-    .booking-dates {
-    margin-right: 10px;
-    }
-    
-    .booking-status {
-    margin-left: 10px;
-    }
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
 
-    
-    
-    
-    
-    
+.form-group label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.form-group input {
+  padding: 5px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+button[type="submit"] {
+  margin-top: 10px;
+  padding: 10px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.list-view {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  list-style: none;
+  padding: 0;
+}
+
+.booking-card {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  padding: 10px;
+}
+
+.booking-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.booking-image {
+  width: 150px;
+  height: 150px;
+  margin-right: 10px;
+}
+
+.booking-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.booking-dates {
+  display: flex;
+  flex-direction: column;
+}
+
+.booking-dates span {
+  margin-right: 10px;
+  font-size: 14px;
+}
+
+.booking-status {
+  display: flex;
+  flex-direction: column;
+}
+
+.booking-status span {
+  font-size: 14px;
+  margin-right: 10px;
+}

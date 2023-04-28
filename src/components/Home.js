@@ -8,6 +8,11 @@ const localizer = momentLocalizer(moment);
 
 const Home = () => {
   const [products, setProducts] = useState([]);
+  const [bookingStart, setBookingStart] = useState("");
+  const [bookingEnd, setBookingEnd] = useState("");
+  const [bookingName, setBookingName] = useState("");
+  const [bookingNumber, setBookingNumber] = useState("");
+  const [bookings, setBookings] = useState([]);
 
   useEffect(() => {
     fetch("https://fakestoreapi.com/products")
@@ -15,76 +20,124 @@ const Home = () => {
       .then((data) => setProducts(data));
   }, []);
 
+  const handleBooking = (e) => {
+    e.preventDefault();
+    const booking = {
+      start: new Date(bookingStart),
+      end: new Date(bookingEnd),
+      title: bookingName,
+      number: bookingNumber,
+    };
+  
+    const isAvailable = bookings.every((item) => {
+      const itemStart = moment(item.start);
+      const itemEnd = moment(item.end);
+      const bookingStartMoment = moment(booking.start);
+      const bookingEndMoment = moment(booking.end);
+  
+      return (
+        bookingStartMoment.isBefore(itemStart) ||
+        bookingStartMoment.isSame(itemStart) ||
+        bookingEndMoment.isAfter(itemEnd) ||
+        bookingEndMoment.isSame(itemEnd)
+      );
+    });
+  
+    if (isAvailable) {
+      setBookings([...bookings, booking]);
+      setBookingStart("");
+      setBookingEnd("");
+      setBookingName("");
+      setBookingNumber("");
+      alert("Booking successful!");
+    } else {
+      alert("Booking slot is not available. Please choose a different slot.");
+    }
+  };
+  
+  
   return (
     <div className="container">
-      <div className="calendar-container">
-        <Calendar localizer={localizer} events={[]} defaultDate={new Date()} />
+     
+        <div className="booking-box">
+          <h2><u><b>Book a slot</b></u></h2>
+          <form onSubmit={handleBooking}>
+            <div className="form-group">
+              <label htmlFor="start">Start date/time:</label>
+              <input
+                type="datetime-local"
+                id="start"
+                name="start"
+                required
+                value={bookingStart}
+                onChange={(e) => setBookingStart(e.target.value)}
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="end">End date/time:</label>
+              <input
+                type="datetime-local"
+                id="end"
+                name="end"
+                required
+                value={bookingEnd}
+                onChange={(e) => setBookingEnd(e.target.value)}
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="name">Name:</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                value={bookingName}
+                onChange={(e) => setBookingName(e.target.value)}
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="number">Number of people:</label>
+              <input
+                type="number"
+                id="number"
+                name="number"
+                min="1"
+                required
+                value={bookingNumber}
+                onChange={(e) => setBookingNumber(e.target.value)}
+              />
+            </div>
+            <button type="submit">Book now</button>
+          </form>
+        </div>
+      
+        <ul className="list-view">
+  {bookings.map((booking) => (
+    <li className="booking-card" key={booking._id}>
+      <div className="booking-header">
+        <div className="booking-image">
+          <img src="https://via.placeholder.com/150x150" alt="Booking" />
+        </div>
+        <div className="booking-dates">
+          <span>{booking.start.toDateString()} - {booking.end.toDateString()}</span>
+          <span>All</span>
+          <span>Upcoming</span>
+          <span>Check-in</span>
+          <span>{booking.title}</span>
+        </div>
+        <div className="booking-status">
+          <span>50%</span>
+          <span>Check-In</span>
+          <span>13/28 tasks</span>
+          <span>Check-Out</span>
+        </div>
       </div>
-      <ul className="list-view">
-        <li className="booking-card">
-          <div className="booking-header">
-            <div className="booking-image">
-              <img src="https://via.placeholder.com/150x150" alt="Booking" />
-            </div>
-            <div className="booking-dates">
-              <span>01/01/2021 - 01/02/2021</span>
-              <span>All</span>
-              <span>Upcoming</span>
-              <span>Check-in</span>
-              <span>Monk & Sagar</span>
-            </div>
-            <div className="booking-status">
-              <span>50%</span>
-              <span>Check-In</span>
-              <span>13/28 tasks</span>
-              <span>Check-Out</span>
-            </div>
-          </div>
-        </li>
-        <li className="booking-card">
-          <div className="booking-header">
-            <div className="booking-image">
-              <img src="https://via.placeholder.com/150x150" alt="Booking" />
-            </div>
-            <div className="booking-dates">
-              <span>01/01/2021 - 01/02/2021</span>
-              <span>All</span>
-              <span>Upcoming</span>
-              <span>Check-in</span>
-              <span>Jerry & shrey</span>
-            </div>
-            <div className="booking-status">
-              <span>50%</span>
-              <span>Check-In</span>
-              <span>24/48 tasks</span>
-              <span>Check-Out</span>
-            </div>
-          </div>
-        </li>
-        <li className="booking-card">
-          <div className="booking-header">
-            <div className="booking-image">
-              <img src="https://via.placeholder.com/150x150" alt="Booking" />
-            </div>
-            <div className="booking-dates">
-              <span>13/12/2022 - 15/12/2022</span>
-              <span>All</span>
-              <span>Upcoming</span>
-              <span>Check-in</span>
-              <span>Emmy & Gaurang</span>
-            </div>
-            <div className="booking-status">
-              <span>50%</span>
-              <span>Check-In</span>
-              <span>24/48 tasks</span>
-              <span>Check-Out</span>
-            </div>
-          </div>
-        </li>
-      </ul>
-    </div>
-  );
+    </li>
+  ))}
+</ul>
+
+</div>
+);
 };
 
 export default Home;
-

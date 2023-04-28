@@ -22,12 +22,12 @@ function Sidenav() {
       <ul className={`navbar-menu ${isMobile ? "active" : ""}`}>
       <div className="navbar-item">
         <span className="navbar-header-title">GENERAL</span></div>
-        <ul className="navbar-submenu"><li className="navbar-subitem">
+        <li className="navbar-subitem">
           <a href="#" className="navbar-link">
             <RiDashboardLine className="navbar-icon" />
             <span>Dashboard</span>
           </a>
-        </li></ul>
+        </li>
         <li className="navbar-subitem">
           <a href="#" className="navbar-link">
             <RiBook2Line className="navbar-icon" />

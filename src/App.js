@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Sidenav from './components/Sidenav';
 import Topnav from './components/topnav';
 import Home from './components/Home';
+
 import './App.css';
 // import TravelBookNow from './pages/TravelBookNow';
 // import DestinationPage from './components/DestinationPage';
@@ -26,6 +27,7 @@ function App() {
           <div className="home-content">
             <Home/>
           </div>
+         
         </div>
         <Routes>
           <Route path="/Sidenav" element={<Sidenav />} />
