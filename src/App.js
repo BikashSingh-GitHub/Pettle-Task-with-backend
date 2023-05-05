@@ -2,8 +2,8 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Sidenav from './components/Sidenav';
 import Topnav from './components/topnav';
-import Home from './components/Home';
-
+import Bookings from './components/Bookings';
+import Form from './components/Form';
 import './App.css';
 // import TravelBookNow from './pages/TravelBookNow';
 // import DestinationPage from './components/DestinationPage';
@@ -21,18 +21,20 @@ function App() {
           <div className="side-nav">
             <Sidenav/>
           </div>
-          <div className="top-nav">
-            <Topnav/>
+          <div className="top-nav"> 
+      
           </div>
           <div className="home-content">
-            <Home/>
+     <Form/><Bookings />
           </div>
          
         </div>
         <Routes>
+        <Route path="/Form" element={<Form />} />
+        <Route path="/Bookings" element={<Bookings />} />
           <Route path="/Sidenav" element={<Sidenav />} />
           <Route path="/Topnav" element={<Topnav />} />
-          <Route path="/Home" element={<Home/>} />
+          
           {/* <Route path="/TravelBookNow" element={<TravelBookNow/>} />
           <Route path="/Login" element={<Login/>} />
           <Route path="/destinationpage" element={<DestinationPage />} />

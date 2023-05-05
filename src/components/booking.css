@@ -1,0 +1,10 @@
+.booking-row {
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+  }
+  
+  .booking-row td {
+    padding: 10px;
+    border: 1px solid #ddd;
+  }
+  

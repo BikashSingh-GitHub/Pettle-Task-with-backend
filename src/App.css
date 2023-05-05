@@ -1,17 +1,44 @@
+/* App.css */
+
 .App {
-    display: flex;
-    flex-direction: row;
-  }
-  
-  .Sidenav {
-    flex: 1;
-  }
-  
-  .Topnav {
-    flex: 1;
-  }
-  
-  .Home {
-    flex: 8;
-  }
-  
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+}
+
+.Sidenav {
+  flex: 1;
+  background-color: #333;
+  color: white;
+  padding: 20px;
+}
+
+.Topnav {
+  flex: 1;
+  background-color: #f2f2f2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.Topnav input[type="text"] {
+  border: none;
+  background-color: white;
+  border-radius: 20px;
+  padding: 5px 10px;
+  flex: 1;
+  max-width: 500px;
+  margin-right: 10px;
+}
+
+.Topnav button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.Home {
+  flex: 8;
+  padding: 20px;
+}
